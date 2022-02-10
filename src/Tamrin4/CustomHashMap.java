@@ -117,6 +117,16 @@ public class CustomHashMap<K, V> {
             cell = cell.getNext();
         }
     }
+    private void checkerSize(){
+        if (size==capacity){
+             Cell<K, V>[] tempe=table;
+             capacity *=2;
+            table = new Cell[capacity];
+            table=tempe;
+
+
+        }
+    }
 
 }
 

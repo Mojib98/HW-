@@ -5,5 +5,7 @@ public class Main4 {
 
 
     CustomHashMap<String,Integer> a=new CustomHashMap<>();
+    a.put("m",2);
+    a.show();
         System.out.println();
 }}

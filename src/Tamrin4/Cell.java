@@ -35,4 +35,12 @@ public class Cell<K,V>{
     public void setNext(Cell<K, V> next) {
         this.next = next;
     }
+
+    @Override
+    public String toString() {
+        return "Cell{" +
+                "key=" + key +
+                ", value=" + value +
+                '}';
+    }
 }

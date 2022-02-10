@@ -32,6 +32,10 @@ public class CustomHashMap<K, V> {
           return result;
       }*/
     public void put(K key, V value) {
+        if (isGet(key)){
+            replace(key,value);
+        }
+        else {
         int index = index(key);
         Cell<K, V> cell = new Cell<>(key, value, null);
         if (table[index] == null) {
@@ -50,7 +54,7 @@ public class CustomHashMap<K, V> {
             if (previCell != null)
                 previCell.setNext(cell);
         }
-    }
+    }}
 
     public V get(K key) {
         V value = null;
@@ -66,7 +70,7 @@ public class CustomHashMap<K, V> {
         return value;
     }
 
-    public boolean Isget(K key) {
+    public boolean isGet(K key) {
         V value = null;
         int index = index(key);
         Cell<K, V> cell = table[index];
@@ -82,6 +86,7 @@ public class CustomHashMap<K, V> {
     public void show() {
         for (Cell c : table
         ) {
+            if (c != null)
             System.out.println(c);
 
         }
@@ -100,6 +105,17 @@ public class CustomHashMap<K, V> {
             return 0;
         }
         return Math.abs(key.hashCode() % capacity);
+    }
+    private void replace(K key,V value){
+        int index = index(key);
+        Cell<K, V> cell = table[index];
+        while (cell != null) {
+            if (cell.getKey().equals(key)) {
+                cell.setValue(value);
+                return;
+            }
+            cell = cell.getNext();
+        }
     }
 
 }
